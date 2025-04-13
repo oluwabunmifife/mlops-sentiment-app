@@ -1,4 +1,5 @@
-FROM python:3.13
+# Specifying the platform since I'm building the image on a Mac
+FROM --platform=linux/amd64 python:3.13 AS build_amd64
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
