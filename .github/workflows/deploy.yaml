@@ -40,7 +40,10 @@ jobs:
 
     - name: Update kubeconfig for EKS
       run: |
-        aws eks update-kubeconfig --name ${{ secrets.CLUSTER_NAME }}
+        aws eks update-kubeconfig --region us-east-1 --name ${{ secrets.CLUSTER_NAME }}
+
+    - name: Debug kubeconfig
+      run: cat /home/runner/.kube/config
     
     - name: Set up kubectl
       uses: azure/setup-kubectl@v4
